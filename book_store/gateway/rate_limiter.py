@@ -1,7 +1,7 @@
 import time
 import json
 from fastapi import HTTPException
-from .config import USE_FAKEREDIS, REDIS_URL
+from config import USE_FAKEREDIS, REDIS_URL
 
 if USE_FAKEREDIS:
     import fakeredis

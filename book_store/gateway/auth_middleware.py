@@ -1,6 +1,6 @@
 import jwt
 from fastapi import Request, HTTPException
-from .config import SECRET_KEY, ALGORITHM
+from config import SECRET_KEY, ALGORITHM
 
 def get_user_from_token(request: Request):
     auth = request.headers.get("Authorization")

@@ -13,35 +13,35 @@ services:
     depends_on:
       - redis
 
-  # book_service:
-  #   build: ./book_service
-  #   ports:
-  #     - "8002:8002"
-  #   depends_on:
-  #     - redis
+  book_service:
+    build: ./book_service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - redis
 
-  # orders_service:
-  #   build: ./orders_service
-  #   ports:
-  #     - "8003:8003"
-  #   depends_on:
-  #     - redis
+  orders_service:
+    build: ./orders_service
+    ports:
+      - "8003:8003"
+    depends_on:
+      - redis
 
-  # reviews_service:
-  #   build: ./reviews_service
-  #   ports:
-  #     - "8004:8004"
-  #   depends_on:
-  #     - redis
+  reviews_service:
+    build: ./reviews_service
+    ports:
+      - "8004:8004"
+    depends_on:
+      - redis
 
-  # gateway:
-  #   build: ./gateway
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - auth_service
-  #     - book_service
-  #     - orders_service
-  #     - reviews_service
-  #     - redis
+  gateway:
+    build: ./gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - auth_service
+      - book_service
+      - orders_service
+      - reviews_service
+      - redis
       

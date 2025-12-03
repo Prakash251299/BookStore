@@ -2,9 +2,9 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import time
 
-from .routes import router
-from .rate_limiter import rate_limit
-from .auth_middleware import get_user_from_token
+from routes import router
+from rate_limiter import rate_limit
+from auth_middleware import get_user_from_token
 
 app = FastAPI(title="API Gateway")
 

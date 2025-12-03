@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request, HTTPException
 import httpx
-from .config import AUTH_SERVICE, BOOK_SERVICE, ORDER_SERVICE, REVIEW_SERVICE
+from config import AUTH_SERVICE, BOOK_SERVICE, ORDER_SERVICE, REVIEW_SERVICE
 router = APIRouter()
 SERVICE_MAP = {
     "/api/v1/auth": AUTH_SERVICE,
