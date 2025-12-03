@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta
 
 
-USE_FAKEREDIS = True 
+USE_FAKEREDIS = False
 
 if USE_FAKEREDIS:
     import fakeredis

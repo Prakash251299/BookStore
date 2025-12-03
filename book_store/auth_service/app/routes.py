@@ -147,5 +147,7 @@ def make_admin(
         raise HTTPException(status_code=404, detail="User not found")
 
     user.is_admin = True
+    db.add(user)
     db.commit()
+    db.refresh(user)
     return {"message": "User promoted to admin", "username": username}
