@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy>=1.4
+psycopg2-binary
+python-dotenv
+passlib[bcrypt]
+PyJWT
+redis
+pydantic
+python-multipart
+pydantic-settings
+pydantic[email]
+fakeredis
