@@ -14,6 +14,8 @@ def create_book(db: Session, data: BookCreate) -> models.Book:
         raise ValueError("ISBN already exists")
 
     book = models.Book(**data.dict())
+    print("Book adding")
+    print(book)
     db.add(book)
 
     # ensure category exists in categories table

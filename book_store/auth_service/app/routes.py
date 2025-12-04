@@ -71,9 +71,9 @@ def get_current_user_from_token(token: str = Depends(oauth2_scheme), db: Session
     except Exception:
         raise HTTPException(status_code=401, detail="Invalid token")
     # Try cache
-    cached = redis_utils.get_cached_user_profile(user_id)
-    if cached:
-        return cached
+    # cached = redis_utils.get_cached_user_profile(user_id)
+    # if cached:
+    #     return cached
     user = crud.get_user(db, user_id)
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
@@ -147,7 +147,20 @@ def make_admin(
         raise HTTPException(status_code=404, detail="User not found")
 
     user.is_admin = True
-    db.add(user)
+    # db.add(user)
     db.commit()
-    db.refresh(user)
+    user = crud.get_user_by_username(db, username)
+    if not user:
+        raise HTTPException(status_code=401, detail="User not found")
+    profile = {
+        "id": str(user.id),
+        "email": user.email,
+        "username": user.username,
+        "full_name": user.full_name,
+        "is_active": user.is_active,
+        "is_admin": user.is_admin,
+        "created_at": user.created_at.isoformat() if user.created_at else None
+    }
+    redis_utils.cache_user_profile(username, profile)
+    # db.refresh(user)
     return {"message": "User promoted to admin", "username": username}
